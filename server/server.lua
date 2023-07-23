@@ -79,20 +79,21 @@ function GetAllPlayers()
 end
 
 
+-- Function to extract player identifiers
 function ExtractIdentifiers(src)
-    -- Inizializza una tabella vuota per contenere gli identificatori
+    -- Initialize an empty table to store the identifiers
     local identifiers = {
-        steam = "",     -- Identificatore di Steam
-        ip = "",        -- Indirizzo IP
-        discord = "",   -- Identificatore di Discord
-        license = "",   -- Licenza del gioco
+        steam = "",     -- Steam identifier
+        ip = "",        -- IP address
+        discord = "",   -- Discord identifier
+        license = "",   -- Game license
     }
 
-    -- Loop attraverso gli identificatori del giocatore e li assegna alla corrispondente voce nella tabella 'identifiers'
+    -- Loop through the player's identifiers and assign them to the corresponding entry in the 'identifiers' table
     for i = 0, GetNumPlayerIdentifiers(src) - 1 do
         local id = GetPlayerIdentifier(src, i)
 
-        -- Verifica il tipo di identificatore e lo assegna alla voce corrispondente nella tabella
+        -- Check the type of identifier and assign it to the appropriate entry in the table
         if string.find(id, "steam") then
             identifiers.steam = id
         elseif string.find(id, "ip") then
@@ -104,6 +105,6 @@ function ExtractIdentifiers(src)
         end
     end
 
-    -- Restituisce la tabella contenente gli identificatori del giocatore organizzati per tipo
+    -- Return the table containing the player's identifiers organized by type
     return identifiers
 end
