@@ -3,6 +3,6 @@ Krs = {}
 
 Krs = {
     
-    -- URL del webhook di Discord dove verranno inviate le segnalazioni
+   -- Discord webhook URL where reports will be sent
     DiscordWebhook = '',
 }
