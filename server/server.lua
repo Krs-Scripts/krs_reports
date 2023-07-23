@@ -28,20 +28,20 @@ AddEventHandler("krs_reports:SegnalaGiocatori", function(IdGiocatore, motivo)
     end
 
     if GetPlayerIdentifiers(IdGiocatore)[1] == nil then
-        TriggerClientEvent('ox_lib:notify', src, {type = 'error', description = "Il giocatore segnalato non è online.", 6000})
+        TriggerClientEvent('ox_lib:notify', src, {type = 'error', description = "The reported player is not online.", 6000})
         return
     end
-    TriggerClientEvent('ox_lib:notify', src, {type = 'success', description = "Grazie per aver inviato una segnalazione! Il personale sarà da te a breve.", 6000})
+    TriggerClientEvent('ox_lib:notify', src, {type = 'success', description = "Thank you for submitting a report! The staff will be with you shortly.", 6000})
 
     local players = GetAllPlayers()
     for i = 1, #players do
         if IsPlayerAceAllowed(players[i], "krs_reports.view") then
-            TriggerClientEvent('esx:showNotification', players[i], "Player [" .. IdGiocatore .. "] [" .. GetPlayerName(IdGiocatore) .. "] è stato segnalato by: [" .. src .. "] " .. name .. " for: " .. motivo)
+            TriggerClientEvent('esx:showNotification', players[i], "Player [" .. IdGiocatore .. "] [" .. GetPlayerName(IdGiocatore) .. "] Has been reported by: [" .. src .. "] " .. name .. " for: " .. motivo)
         end
     end
 
     sendToDisc(
-        "Player [" .. IdGiocatore .. "] [" .. GetPlayerName(IdGiocatore) .. "] è stato segnalato..",
+        "Player [" .. IdGiocatore .. "] [" .. GetPlayerName(IdGiocatore) .. "] Has been reported..",
         "**Motivo**: ``" .. motivo .. "``" ..
             "\n**Game License:** ``" .. gameLicense ..
             "``\n**Discord UID:** ``" .. discord:gsub('discord:', '') ..
